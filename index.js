@@ -7,18 +7,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const fromCurrency = document.getElementById("from-currency").value;
     const toCurrency = document.getElementById("to-currency").value;
     
-    // Для примера, предположим, что есть функция convertCurrency(),
-    // которая принимает amount, fromCurrency и toCurrency и возвращает результат.
-    // Замените эту функцию на свою реализацию.
     const convertedAmount = convertCurrency(amount, fromCurrency, toCurrency);
     
     resultDiv.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
   });
   
-  // Функция для конвертации валюты (замените на свою реализацию)
   function convertCurrency(amount, fromCurrency, toCurrency) {
-    // Ваша логика конвертации валюты здесь
-    // Возвращаем только заглушку для примера
-    return (toCurrency === "USD") ? amount * 0.036 : amount * 27.65;
+    if (fromCurrency === "UAH" && toCurrency === "USD") {
+        return amount * 0.036; // Примерный курс гривны к доллару
+    } else if (fromCurrency === "USD" && toCurrency === "UAH") {
+        return amount * 27.65; // Примерный курс доллара к гривне
+    } else {
+        return "Курсы обмена не определены";
+    }
   }
 });
